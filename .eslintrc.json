@@ -4,7 +4,7 @@
   "parserOptions": { "sourceType": "script" },
   "rules": {
     "strict": ["error", "global"],
-    "semi": ["warn", "always"],
+    "semi": ["off", "always"],
     "quotes": ["error", "double"],
     "no-alert": "off",
     "no-console": "off",
