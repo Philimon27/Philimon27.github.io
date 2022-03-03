@@ -50,11 +50,9 @@ for (let j = i; j < arr.length; j++) {
 sumStart += arr[j];
 maxSum = Math.max(maxSum, sumStart); }
 }
-return maxSum; }
-    
-
-
-
+return maxSum; 
+}
+  
 
 function camelize(str) {
      let words = str.split("-");
