@@ -27,7 +27,6 @@ function Accumulator(initialValue, increment){
  * @param {Number} b property of the object
  * @returns {Calculator} this is a constructor function
  */
-
  function Calculator () {
 
     this.setValues = function(a,b){

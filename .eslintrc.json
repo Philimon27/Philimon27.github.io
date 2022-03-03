@@ -10,7 +10,7 @@
     "no-console": "off",
     "no-debugger": "off",
     "no-unused-vars": "warn",
-    "id-length": ["error", { "min": 3, "max": 30, "exceptions": ["i", "j"] }],
+    "id-length": ["error", { "min": 1, "max": 30, "exceptions": ["i", "j"] }],
     "camelcase": ["error", { "properties": "always" }],
     "no-var": "error",
     "valid-jsdoc": ["error"],
