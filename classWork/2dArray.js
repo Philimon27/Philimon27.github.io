@@ -1,7 +1,7 @@
 
 
 
-
+   "use strict"
   function addingArray(array){
     let sum;
     let rowSum=[];
@@ -23,3 +23,4 @@ let matrix = [
     [7, 8, 9]];
 
 console.log("The sum is  " +  addingArray(matrix));
+   

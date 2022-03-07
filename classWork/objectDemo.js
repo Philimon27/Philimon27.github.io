@@ -1,4 +1,4 @@
-
+"use strict"
 const student1={
     studentId: "s101",
     quizAnswers:[1,1,2,4]
@@ -22,8 +22,7 @@ const student3={
   */
 
  function gradeQuiz(quizArr,correctAnswers){
-let scores=[];
-
+let quiz=[]
     for(let i=0;i<quizArr.length;i++){
         let count=0
         for(let j=0;j<quizArr[i].quizAnswers.length;j++){
@@ -33,12 +32,26 @@ let scores=[];
            
               
     }
-    scores.push(count)
+    quiz.push(count)
   
  }  
- return scores;
+ return quiz
 
 }
+
+function objectCompare(quiz){
+   const value= quiz.map((item)=>
+   quiz.studentId=item[item.studentId]
+   item.quizAnswers=gradeQuiz()
+
+   
+   )
+
+
+
+
+}
+
 
 
  console.log(gradeQuiz(quiz,[3,1,2,4]));
