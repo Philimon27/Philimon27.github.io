@@ -43,7 +43,7 @@ bank.bankBalance = function () {
     return bank;
 
 }
-
+        
 //  console.log(makeBank().getBalance(2));
 //  console.log(makeBank().bankBalance());
 
