@@ -14,7 +14,7 @@ Make the transactionsDB private by making it a local variable in the makeBank fu
  */
 function makeBank(){
 
-    const bank = { };
+    const bank = {};
 
 let transactionsDB = [
     { customerId: 1, customerTransactions: [10, 50, -40] },
