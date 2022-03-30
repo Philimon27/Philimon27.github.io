@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p> 
+        <label for="first">First Value</label> <br>
+         <input type="text" id="first" value=" ">
+          <br> <br>
+          <label for="second">Second Value</label> <br> 
+          <input type="text" id="second" value=" "><br><br>
+          <label for="">Operations :</label> <br><br>
+           <input type="button" value="+" onclick="add()"><input type="button" value="-" onclick="subtract()"><input type="button" value="*" onclick="multiply()"> <br> <br>
+           <label for="">Result</label> <br><br>
+           <textarea name="textarea" id="textArea" value=""> </textarea><br>
+        </p>
+
+        <script>
+    
+         function add(){
+            
+             let firstValue= document.getElementById("first").value;
+             let secondValue=document.getElementById("second").value;
+             document.getElementById("textArea").innerHTML=Number(firstValue) + Number(secondValue);
+         } 
+         function subtract(){
+            let firstValue= document.getElementById("first").value;
+             let secondValue=document.getElementById("second").value;
+             document.getElementById("textArea").innerHTML=Number(firstValue) - Number(secondValue);
+
+         }
+         function multiply(){
+            let firstValue= document.getElementById("first").value;
+             let secondValue=document.getElementById("second").value;
+             document.getElementById("textArea").innerHTML=Number(firstValue) * Number(secondValue);
+
+         }
+
+        </script>
+    
+
+</body>
+</html>
