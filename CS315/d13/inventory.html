@@ -30,6 +30,9 @@
     }
 
     </style>
+
+     <script src="inventory.js"></script>
+
 </head>
 
 <body>
@@ -40,6 +43,8 @@
      <input type="text" id="category" style="width: 90%; "><br><br>
      <label for="category">Quantity:</label><br><br>
      <input type="text" id="quantity" style="width: 90%; "><br><br>
+     <label for="category">Ratings:</label><br><br>
+     <input type="text" id="ratings" style="width: 90%; "><br><br>
      <input type="button" value="Add" onclick="addItem()" style =" margin-left: 45%;"> <br><br>
  </div>
     
@@ -49,6 +54,8 @@
             <th>Product Name</th>
             <th>Category</th>
             <th>Quantity</th>
+            <!-- <th><button onclick="edit()">Edit</button></th>
+            <th><button onclick="remove()">Remove</button></th> -->
         </tr> 
         
        </thead>
@@ -58,50 +65,29 @@
          <td>Computers</td>
          <td>Digital</textarea></td>
          <td>100</textarea></td>
+         <td></td>
+         <td></td>
 
         </tr>
         <tr>
             <td>Megazines</td>
             <td>Convenience</td>
             <td>1000</td>
+            <td></td>
+            <td></td>
    
            </tr>
            <tr>
             <td>Books</td>
             <td>Education</td>
             <td>20</td>
+            <td></td>
+            <td></td>
    
            </tr>
        </tbody>
       </table>
 
-      <script>
-        function addItem(){
-            let table = document.getElementById("main");
-            let names = document.getElementById("name");
-            let category = document.getElementById("category");
-            let quantity = document.getElementById("quantity");
-            let tr = document.createElement("tr");
-            table.append(tr);
-            let td1 = document.createElement("td");
-            tr.append(td1);
-            td1.innerText = names.value;
-           
-
-            let td2 = document.createElement("td");
-            tr.append(td2);
-            td2.innerText = category.value;
-            
-            let td3 = document.createElement("td");
-            tr.append(td3);
-            td3.innerText = quantity.value;
-           
-
-
-            
-        }
-    </script>
-
-
+      
 </body>
 </html>
