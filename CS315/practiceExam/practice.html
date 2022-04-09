@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plants</title>
+    <style>
+        textarea{
+            user-select: text;
+        }
+        body{
+            background-color: whitesmoke;
+           
+        }
+        button{
+            color: blue;
+        
+        }
+        select{
+            color:blue;
+            padding: 5px
+        }
+        input{
+            color:blue;
+        }
+        select~select{
+            margin-left: 10px;
+        }
+    </style>
+
+   <script>
+       let array=[];
+       let sourceValue;
+       let destinationValue;
+       window.onload=function(){
+         sourceValue=document.getElementsByTagName("select")[0];
+         destinationValue=document.getElementsByTagName("select")[1];
+          document.getElementById("add").onclick=add;
+          document.getElementById("toDestination").onclick=moveToDestination;
+          document.getElementById("toSource").onclick=moveTOSource;
+          document.getElementById("sort").onclick=sortByName;
+       };
+
+      function add(){
+          let pn= document.getElementById("pname");
+         //let addingElement=document.getElementsByTagName("select")[0];
+           let newElement=document.createElement("option");
+           newElement.innerHTML+=pn.value;
+           pn.value=""
+
+           sourceValue.append(newElement);
+          
+          
+
+      }
+      function moveToDestination(){
+             let message=document.createElement("p");
+             message.innerHTML="Moved to Destination Successfully";
+             let header=document.getElementsByTagName("h2")[0];
+              header.after(message);
+              setTimeout(function(){
+                message.style.display="none"
+              },2000)
+        
+        
+           let arrays=[];
+           for (const son of sourceValue.options) {
+            console.log(son,son.selected,son.innerHTML)
+                 if(son.selected){
+                 arrays.push(son)
+                
+                 }
+                 
+           }
+           for (const option of arrays) {
+          
+              let newElement=document.createElement("option");
+              newElement.innerHTML+=option.innerHTML;
+              destinationValue.append(newElement);
+              option.remove()
+           }
+        }
+    
+      function moveTOSource(){
+       
+          let children=destinationValue.options;
+         let arrays=[];
+           for (const son of children) {
+               
+                 if(son.selected){
+              
+              arrays.push(son);
+            
+                 }
+                 
+           }
+           for (const option of arrays) {
+           
+              let newElement=document.createElement("option");
+              newElement.innerHTML+=option.innerHTML;
+              sourceValue.append(newElement);
+                  option.remove();
+           }
+
+      }
+       
+      
+    
+     function sorter(sourceValue){
+      
+        
+          let arrayOfItems=[];
+          for (const item of sourceValue.options) {
+              arrayOfItems.push(item.innerHTML)
+          } 
+
+          let sorted=arrayOfItems.sort((item1,item2)=>item1>item2?1:-1); 
+          sourceValue.innerHTML="";
+              for (const element of sorted) {
+                let newElement=document.createElement("option")
+                newElement.innerHTML= element;
+                sourceValue.append(newElement)
+             
+              }       
+       }
+
+    function sortByName(){
+        sorter(sourceValue);
+        sorter(destinationValue);
+    }
+    
+      
+
+
+
+   </script>
+
+
+</head>
+<body>
+    
+    <h2>Add Plant</h2>
+   <label for="">Plant Name:</label> <input type="text" id="pname">
+   <button id="add">Add</button><br><br>
+   <label >Source</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+   <label for="">Destination</label><br> <br>
+
+  <select name="source"  multiple></select>
+   <button id="toDestination">></button>
+   <button id="toSource"><</button>
+   <select name="destination" multiple></select>
+   <button id="sort">Sort</button>
+
+
+
+</body>
+</html>

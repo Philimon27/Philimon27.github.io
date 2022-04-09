@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
-</head>
-<body>
-  <h1>Inventory</h1>
-  <div>
-    <p>
-      Item Name: &nbsp; &nbsp; &nbsp;
-      <input type="text" value="" id="itemName" />
-    </p>
-    <p>
-      Item Category: &nbsp;
-      <input type="text" value="" id="category" />
-    </p>
-    <p>
-      Quantity: &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-      <input type="text" value="" id="quantity" />
-    </p>
-    <p>
-      <input type="submit" value="Add" class="addButton" onclick="add()" />
-    </p>
-    <input type="submit" value="filter" onclick="filter()" />
-    <input type="submit" value="sort by name" onclick="sortByName()" />
-    <input type="submit" value="sort by quantity" onclick="sortByQuantity()" />
-    <br/>
-    
-  </div>
-  <table id="items">
-    <tr>
-      <th>Product Name</th>
-      <th>Category</th>
-      <th>Quantity</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </table>
-  <script>
+    <style>
+        h2{
+            color: #000;
+        }
+        body{
+            background-color: #666;
+        }
+   th,td{
+        border:1px solid #ccc;
+       
+    }
+    table{
+        border-collapse: collapse;
+        width:50%
+    }
+    td,td1,td2,td3{
+        text-align: center;
+        color:#000
+    }
+    th{
+        color:turquoise
+    }
+    tr:hover{
+        background-color: black;
+     
+    }
+    </style>
+
+<script>
     var array = [];
     var index = 0;
 
@@ -46,7 +39,8 @@
         id: index, 
         name: document.getElementById("itemName").value,
         category: document.getElementById("category").value,
-        quantity: document.getElementById("quantity").value
+        quantity: document.getElementById("quantity").value,
+        rating: document.getElementById("rating").value
 
         
       }
@@ -78,15 +72,24 @@
       tr.append(categoryTd);
 
       let quantityTd = document.createElement("td");
-     newQuantity =parseInt(document.getElementById("quantity").value);
+     let newQuantity =parseInt(document.getElementById("quantity").value);
      if(isNaN(newQuantity)){
          alert("Only Numbers are allowed");
          quantityTd.style.backgroundColor="red";
      }
       quantityTd.innerHTML=newQuantity;
       tr.append(quantityTd);
-        
-      if(newName=="" || newCategory==""|| newQuantity==""){
+
+      let ratingTd=document.createElement("td");
+      let newRating=parseInt(document.getElementById("rating").value);
+         if(isNaN(newRating)){
+         alert("Only Numbers are allowed");
+         ratingTd.style.backgroundColor="red";
+     }
+     ratingTd.innerHTML=newRating;
+       tr.append(ratingTd);
+
+      if(newName=="" || newCategory==""|| newQuantity==""|| newRating==""){
           alert("please enter all the elements")
       }
        
@@ -103,22 +106,38 @@
         console.log(this.parentNode.parentNode.childNodes)// All 5 columns(td's)
         let childNodes = this.parentNode.parentNode.childNodes;
 
-        document.getElementById("itemName").value = 1//childNodes[0].innerHTML;
-        document.getElementById("category").value = 2//childNodes[1].innerHTML;
-        document.getElementById("quantity").value = 3//childNodes[2].innerHTML;
-
+        document.getElementById("itemName").value //= //childNodes[0].innerHTML;
+        document.getElementById("category").value //= //childNodes[1].innerHTML;
+        document.getElementById("quantity").value //= //childNodes[2].innerHTML;
+        document.getElementById("rating").value   //= //childNodes[3].inneerHTML;
         let myId = this.getAttribute("myId");
         array.forEach(function (item) {
           if (item.id == myId) {
             item.name = document.getElementById("itemName").value;
             item.category = document.getElementById("category").value;
-            item.quantity = document.getElementById("category").value;
+            item.quantity = document.getElementById("quantity").value;
+            item.rating=document.getElementById("rating").value;
+          
+            let eptd=document.createElement("td")
+            eptd.innerHTML=document.getElementById("itemName").value;
+            let ectd=document.createElement("td")
+            ectd.innerHTML=document.getElementById("category").value;
+            let eqtd=document.createElement("td")
+            eqtd.innerHTML=document.getElementById("quantity").value;
+            let ertd=document.createElement("td")
+            ertd.innerHTML=document.getElementById("rating").value;
+         
+            tr.cells[0].replaceWith(eptd);
+            tr.cells[1].replaceWith(ectd);
+            tr.cells[2].replaceWith(eqtd)
+            tr.cells[3].replaceWith(ertd)
           }
         })
-
+        
       }
       editTd.append(button);
       tr.append(editTd);
+
 
       let td = document.createElement("td");
       let deleteButton = document.createElement("button");
@@ -136,6 +155,43 @@
       td.append(deleteButton);
       tr.append(td);
     }
+    
+    window.onload=function(){
+        
+
+        let sortElement = document.getElementsByName("sort")[0];
+        sortElement.onchange = sort;
+    };
+  
+    function filtering(obj){
+        //let selectedOpt=" "
+       
+        // console.log(this);
+        // console.log(this.options);
+        for(let option of obj.children){
+           // console.log(option,"Is Selected", option.selected, option.innerHTML);
+            if(option.selected && option.value=="filter100"){
+                filter();
+                break;
+            }
+            else if(option.selected && option.value=="clear"){
+               clearFilter();
+               break;
+             }
+        }
+    }
+
+    function clearFilter() {
+      console.log(array);
+      let filteredArray = array.filter((item) => Number(item.quantity) > 100);
+      let children = document.getElementById('items').childNodes;
+      for (let i = 2; i < children.length; i++) {
+        let eachTr = children[i];
+        console.log(eachTr.children[2]);
+        eachTr.style.display = "";
+      }
+
+    }
 
     function filter() {
       console.log(array);
@@ -150,21 +206,49 @@
 
       }
     }
+    
+    function ratingFilter() {
+      console.log(array);
+      let filteredArray = array.filter((item) => Number(item.rating) > 4);
+      let children = document.getElementById('items').childNodes;
+      for (let i = 2; i < children.length; i++) {
+        let eachTr = children[i];
+        console.log(eachTr.children[2]);
+        if (Number(eachTr.children[3].innerHTML) < 4) {
+          eachTr.style.display = "none";
+        }
 
-   
+      }
+    }
+
+    function sort(){
+        //let selectedOpt=" "
+        console.log(this);
+        console.log(this.options);
+        for(let option of this.options){
+            console.log(option,"Is Selected", option.selected, option.innerHTML);
+            if(option.selected && option.innerHTML=="sort By Name"){
+                sortByName();
+            }
+            else{
+                sortByQuantity();
+            }
+        }
+    }
 
     function sortByName(){
-      //let sortedArray=array.sort((item1,item2)=>item1.name >item2.name?1:-1);
-      let children=documemnt.getElementById("items").childNodes;
-      let shouldSwitch;
+      let sortedArray=array.sort((item1,item2)=>item1.name >item2.name?1:-1);
+      
+      let children=document.getElementById("items").childNodes;
+      let shouldSwitch,i;
       let switching=true;
       while(switching){
         switching=false;
 
-      for(let i=2;i<children.length;i++){
+      for( i=2;i<children.length-1;i++){
         shouldSwitch=false;
-        let x=children[i][0];
-        let y=children[i+1][0];
+        let x=children[i].cells[0];
+        let y=children[i+1].cells[0];
        if(x.innerHTML.toLowerCase()>y.innerHTML.toLowerCase()){
          shouldSwitch=true;
          break;
@@ -179,7 +263,83 @@
       
     }
     }
+    function sortByQuantity(){
+      let sortedArray=array.sort((item1,item2)=>item1 >item2?1:-1);
+      
+      let children=document.getElementById("items").childNodes;
+      let shouldSwitch,i;
+      let switching=true;
+      while(switching){
+        switching=false;
+
+      for( i=2;i<children.length-1;i++){
+        shouldSwitch=false;
+        let x=children[i].cells[2];
+        let y=children[i+1].cells[2];
+       if(parseInt(x.innerHTML)>parseInt(y.innerHTML)){
+         shouldSwitch=true;
+         break;
+       }
+      }
+       if (shouldSwitch) {
+      
+      children[i].parentNode.insertBefore(children[i + 1], children[i]);
+      switching = true;
+    }
+
+      
+    }
+    }
+
   </script>
+
+
+</head>
+<body>
+  <h1>Inventory</h1>
+  <div>
+    <p>
+      Item Name: &nbsp; &nbsp; &nbsp;
+      <input type="text" value="" id="itemName" />
+    </p>
+    <p>
+      Item Category: &nbsp;
+      <input type="text" value="" id="category" />
+    </p>
+    <p>
+      Quantity: &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+      <input type="text" value="" id="quantity" />
+    </p>
+    <p>
+      Rating: &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+      <input type="text" value="" id="rating" />
+      </p>
+    <p>
+      <input type="submit" value="Add" class="addButton" onclick="add()" />
+    </p>
+   
+        <select name="sort">
+            <option selected >sort By Name</option>
+            <option>sort By Quantity</option>
+        </select>
+      <select name="filter" onchange="filtering(this)">
+        <option value="filter100" >FilterQ >100</option>
+        <option  value="clear"> clear Filter</option>
+        
+    </select>
+    <input type="submit" value="Rating Filter" onclick="ratingFilter()" />
+    
+  </div> <br/>
+  <table id="items">
+    <tr>
+      <th>Product Name</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>Rating</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </table>
 </body>
 
 </html>

@@ -1,0 +1,101 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Enrollment</title>
+
+      <style>
+     input{
+        padding:5px;
+        font-size:15px;
+        border-radius: 4px;
+     }
+     label{
+         width:15%;
+         display:inline-block;
+         text-align:right;
+     } 
+     input[type="button"]{
+         margin-right: 20%;
+     }
+     select{
+         font-size: 15px;
+         border-radius: 4px;
+     }
+
+      </style>
+      <script>
+        
+          window.onload=function(){
+            document.getElementsByTagName("input")[2].onclick=submit;
+          let selectCountry=document.getElementsByTagName("select")[0]
+           let selectState=document.getElementById("state");
+            
+        };
+        
+        function selectingOtherCountry(selectCountry){
+           selectCountry  =document.getElementsByTagName("select")[0]
+            selectState=document.getElementById("state");
+            let labelOfState=document.getElementsByTagName("label")[2];
+            console.log(selectCountry.options)
+            for(let option of selectCountry.options){
+                
+                if(option.selected && option.value=="other"){
+                  selectState.style.display="none";
+                  labelOfState.style.display="none";
+                  break;
+                }
+                else if(option.selected && option.value=="USA"){
+                    selectState.style.display="";
+                  labelOfState.style.display="";
+                  break;
+                }
+
+                }
+            }
+        
+
+        function submit(){
+            let changedvalue=document.getElementsByTagName("input")[2];
+            changedvalue.value="Done";
+            document.getElementsByTagName("input")[0].value="";
+            documnet.getElementsById("zip").value="";
+        }
+       
+      </script>
+  </head>
+  <body>
+       <h2>Enrollment</h2>
+       <p>
+       <label for="">Name</label> &nbsp; &nbsp; &nbsp;
+       <input type="text" id="name" value="Enter Name" >
+       </p>
+       
+           <label for="">Select Country</label>&nbsp; &nbsp;
+           <select name="scountry" id="country" onchange="selectingOtherCountry()">
+               <option value="USA">USA</option>
+               <option value="other">Other</option>
+           </select>
+       
+       <p>
+           <label for="">Select State</label> &nbsp;&nbsp;
+           <select name="sstate" id="state">
+               <option value="Alabama">Alabama</option>
+               <option value="Alaska">Alaska</option>
+               <option value="California">California</option>
+           </select>
+       </p>
+       <p>
+           <label for="">Zip Code</label>&nbsp;&nbsp;
+           <input type="text" id="zip" value="Enter Zip">
+       </p>
+       <p>
+           <input type="button" value="Submit">
+       </p>
+      
+
+
+  </body>
+  </html>
