@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  margin: 40px;
+}
+
+   .sidebar {
+		grid-area: sidebar;
+	}
+
+	.content1 {
+		grid-area: content1;
+	}
+
+	.header {
+		grid-area: header;
+	}
+    .content2{
+        grid-area: content2;
+    }
+    .sidebar2{
+        grid-area: sidebar2;
+    }
+    .footer{
+        grid-area:footer;
+    }
+
+
+	.wrapper {
+        grid-area:auto;
+        grid-column:4;
+        grid-row:3;
+		display: grid;
+        grid-gap: 10px;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-areas:
+               "....... ........ ........ header"
+			   "sidebar content1 content2 sidebar2 "
+               "footer  footer   footer   footer";
+		background-color: #fff;
+		color: #444;
+       
+	}
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+.header {
+  background-color: #999;
+}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box header">Header</div>
+        <div class="box sidebar">Sidebar</div>
+        <div class="box content1">Content1</div>
+        <div class="box content2">Content2</div>
+        <div class="box sidebar2">sidebar2</div>
+        <div class="box footer">footer</div>
+    
+      </div>
+</body>
+</html>
