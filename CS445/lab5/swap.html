@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>  
+        <img  id="img1" style="max-width:100px" src="Amazon logo.png" alt="">
+        <img  id="img2" style="max-width:100px" src="greekcity.png" alt=""> 
+        <button id="swap">Swap</button>
+    </div>
+   
+     
+    
+    
+</body>
+<script>
+    document.getElementById("swap").onclick=function(){
+        let imageOne=document.getElementById("img1");
+        let imageTwo=document.getElementById("img2");
+         let temp=imageOne.src;
+         imageOne.src=imageTwo.src;
+         imageTwo.src=temp;
+    }
+</script>
+</html>
