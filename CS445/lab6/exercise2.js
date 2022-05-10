@@ -1,15 +1,18 @@
 "use strict"
+Array.prototype.removeDuplicatesAsync = function() {
+    let arr = this;
+    new Promise(function(resolve, reject) {
+        resolve([...new Set(arr)]);
+    }).then(console.log);
+}
 
-const myFilterFunction=function(){
-       const newArray=[];
-       
-       for(let i=0;i<this.length;i++){
-        if(!newArray.includes(this[i])) newArray.push(this[i]);
-           
-       }
-       return newArray;
-   }
-   Array.prototype.removeDuplicatesAsync= myFilterFunction;
-   let arr=[4,5,6,8,9,4,4,5]
-  console.log(arr.removeDuplicatesAsync()); 
-  
+
+
+console.log(`start`);
+[4, 1, 5, 7, 2, 3, 1, 4, 6, 5, 2].removeDuplicatesAsync();
+console.log(`end`);
+
+// Output:
+// start
+// end
+// [4, 1, 5, 7, 2, 3, 6]
