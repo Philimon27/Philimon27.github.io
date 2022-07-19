@@ -41,4 +41,5 @@ for (let i = 0, len = bulbs.length; i < len; i++) {
     console.log(bulbs[i]);
 }
 
-       
+
+      

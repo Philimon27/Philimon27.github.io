@@ -6,7 +6,8 @@ class Subject{
    on(event,fn){
        if(this.observers[event]){
            this.observers[event].push(fn)
-       }else{
+       }
+        else{
        this.observers[event]=[fn]
     }
    }

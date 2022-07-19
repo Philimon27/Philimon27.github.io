@@ -69,3 +69,4 @@ function getEmployeeNameInArray(department){
 }
 
 console.log(getEmployeeNameInArray(company));
+

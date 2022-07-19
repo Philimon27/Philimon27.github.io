@@ -1,7 +1,8 @@
 "use strict"
 Array.prototype.removeDuplicatesAsync = function() {
     let arr = this;
-    new Promise(function(resolve, reject) {
+    new Promise((resolve, reject)=> {
+       
         resolve([...new Set(arr)]);
     }).then(console.log);
 }
@@ -16,3 +17,10 @@ console.log(`end`);
 // start
 // end
 // [4, 1, 5, 7, 2, 3, 6]
+
+
+// ******OR********
+
+// Array.prototype.removeDuplicatesAsync = async function() {
+//     console.log(await [...new Set(this)]);
+// }

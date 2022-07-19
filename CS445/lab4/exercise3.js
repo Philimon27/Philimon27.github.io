@@ -18,8 +18,6 @@ class Error{
 class Table{
       
     logging(input){
-        // let tableArray=[];
-        // tableArray.push(input);
           console.log(input)
     }
 }

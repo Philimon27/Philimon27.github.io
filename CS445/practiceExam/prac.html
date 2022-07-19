@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+
+ <head>
+     <!-- <script>
+         window.onload=function(){
+             document.getElementById("btn").onclick=function(){
+                 let gender=document.getElementById("filter").value;
+                 fetch("https://randomuser.me/api?results=10"
+                 ).then(res=>res.json()).then(data=>{
+                     data.results.filter(item=>item.gender==gender).forEach(element => {
+                            console.log(`${element.name.first} and ${element.name.last}`);
+                         })  
+                     })  
+                 }  
+             }
+         
+     </script> -->
+
+     <script>
+         window.onload= function(){
+             document.getElementById("btn").onclick= async function(){
+                let gender=document.getElementById("filter").value;
+                let res= await fetch("https://randomuser.me/api?results=10").then(resp=>resp.json())
+                //let out= await res.json();
+                res.results.filter(item=>item.gender===gender).forEach(element=>console.log(element.name.first+ "and" + element.name.last))
+
+             }
+         }
+     </script>
+ </head>
+
+<!-- <body>
+
+    <button id="myBtn">Try it</button>
+
+    <script>
+
+        const myBtn = document.getElementById("myBtn");
+
+        myBtn.addEventListener("click", function(event) {
+
+            console.log(1);
+
+        });
+
+        myBtn.addEventListener("click", function(event) {
+
+            console.log(2);
+
+            event.stopImmediatePropagation();
+
+        });
+
+        myBtn.addEventListener("click", function(event) {
+
+            console.log(3);
+
+        });
+
+    </script>
+
+</body> -->
+ <body>
+
+    <!-- <div id="main">
+    <p id="blog">
+    <button id="myBtn">Try it</button>
+    </p> </div>
+    <script>
+    document.getElementById('main').addEventListener('click', function() { console.log('1');}, true);
+    document.getElementById('blog').addEventListener('click', function() { console.log('2');}, false);
+    const myBtn = document.getElementById("myBtn"); 
+    myBtn.addEventListener('click', function() {
+    console.log('3');}, true); 
+    myBtn.addEventListener("click", (event) => {
+    console.log('4');
+     event.stopImmediatePropagation(); 
+ });
+    myBtn.addEventListener("click", () => console.log('5')); </script> -->
+
+
+
+    <!-- <button id="btn">Click me</button>
+    <script>
+    const course = "MWP";
+    function myCallBack(val){
+    const course = "CS445"
+    return function (val) { alert (course); };}
+       document.querySelector('#btn').addEventListener ('click', function () {
+          let y=myCallBack("Umur")
+          y();});
+   // document.querySelector('#btn').addEventListener ('click', myCallBack("Asaad"));
+    </script>
+ -->
+
+   <input type="text" id="filter">
+   <button id="btn">Get User</button>
+
+
+
+    </body>
+    
+
+
+
+ 
+
+</html>
