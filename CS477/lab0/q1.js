@@ -9,4 +9,4 @@ const result = (function(exports, module){
     }
     return module.exports;
 }).apply(null, [null, {exports: {}}]);
-console.log(result);
+console.log(result);// the result {firstname: john,lastname:smith}

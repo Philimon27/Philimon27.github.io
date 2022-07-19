@@ -19,6 +19,7 @@ class Student {
 
     edit(){
         const index=db.findIndex(stu=>stu.id===this.id)
+         db[index]=this;
    
     }
 
