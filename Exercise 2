@@ -1,0 +1,26 @@
+Exercise 2
+
+   2.1 Explain why do we want sometimes to use setImmediate instead of using setTimeout?
+   Solution:
+
+   Main  advantage of setImmediate over setTimeout is that setImmediate will always be executed  before any timers if scheduled with an i/o  cycle,independently of howmany timers are present.
+
+   2.2 Explain the difference between process.nextTick and setImmediate?
+   Solution:
+
+   Process.nextTick is used to schedule a callback function to be invoked in the next iteration of the event loop. setImmediate mehod is used to execute a function  right after the current event loop finishes 
+
+   2.3 Name 10 global modules/methods available in Node environment.
+   Solution:
+
+     assert
+     buffer
+     events
+     nets
+     http
+     https
+     os
+     timers
+     url
+     v8
+
